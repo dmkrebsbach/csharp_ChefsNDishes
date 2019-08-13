@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Form Submission</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="~/css/style.css">
+	</head>
+    <body>
+        @model DishesView
+        <div class="container">
+            <h1> CHEF's N' DISHES </h1>
+            <h1><a href="/">CHEFS</a>|||<a href="/Dishes">DISHES</a></h1>
+            <h2>Check Out our Roster of Chefs!</h2>
+            <h4><a href="/newChef">Add a Chef</a>|||<a href="/newDish">Add a Dish</a></h4>
+            <div class = "dishes">
+                <table class="chefs">
+                    <tr>
+                        <th><h4>Name</h4></th>    
+                        <th><h4>Chef</h4></th>    
+                        <th><h4>Tastiness</h4></th>
+                        <th><h4>Calories</h4></th>    
+                    </tr>
+                    @{
+                        @foreach(Dish dish in Model.Dishes)
+                        {
+                            <tr>
+                                <td>@dish.Name</td>    
+                                <td>@dish.chef.FirstName @dish.chef.LastName</td>    
+                                <td>@dish.Tastiness</td>
+                                <td>@dish.Calories</td>
+                            </tr> 
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

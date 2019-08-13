@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Form Submission</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="~/css/style.css">
+	</head>
+    <body>
+        @model NewChefView
+        <div class="container">
+            <div class = "formBox">
+                <h1>Add A Chef</h1>
+                <h1><a href="/">Home</a></h1>
+                <form asp-action="AddChef" asp-controller="Home" method="post">
+                    <label asp-for="newChef.FirstName">First Name: </label>
+                    <input asp-for="newChef.FirstName"><br>
+                    <label asp-for="newChef.LastName">Last Name: </label>
+                    <input asp-for="newChef.LastName"><br>
+                    <label asp-for="newChef.BirthDate">Birthday: </label>
+                    <input type="date" asp-for="newChef.BirthDate"><br>
+                    <input class = "btn" value="ADD CHEF" type="submit">
+                </form>
+            </div>
+            <div class = "formBoxMessage">
+                <span asp-validation-for="newChef.FirstName"></span>
+                <span asp-validation-for="newChef.LastName"></span>
+                <span asp-validation-for="newChef.BirthDate"></span>
+            </div>
+        </div>
+    </body>
+</html>

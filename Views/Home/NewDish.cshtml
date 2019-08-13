@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>CRUDelicious</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="~/css/style.css">
+	</head>
+    <body>
+        @model NewDishView
+        <div class="container">
+            <h1>Add a New Dish!</h1>
+            <h1><a href="/">Home</a></h1>
+            <div class="formBox">
+                <form asp-action="AddDish" asp-controller="Home" method="post">
+                    
+                    <label asp-for="newDish.Name">Dish Name:</label>
+                    <input type="text" asp-for="newDish.Name">
+
+                    <label asp-for="newDish.ChefId">Created By:</label>
+                    <select asp-for="newDish.ChefId">
+                        @{
+                            foreach(Chef chef in Model.Chefs)
+                            {
+                                <option value="@chef.ChefId">@chef.FirstName @chef.LastName</option>
+                            }
+                        }
+                        <option value="1">1</option>
+                        
+                    </select>
+
+                    <label asp-for="newDish.Calories">Calories In Dish:</label>
+                    <input type="text" asp-for="newDish.Calories">
+
+                    <label asp-for="newDish.Tastiness">Tastiness: (out of 5)</label>
+                    <select asp-for="newDish.Tastiness">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+
+                    <label asp-for="newDish.Description">Description: </label>
+                    <textarea asp-for="newDish.Description"></textarea>
+
+                    <input type="submit" value="Add Dish">
+                </form>
+            </div>
+            <div class="formBoxM">
+                    
+                    <span asp-validation-for="newDish.Name"></span>
+                    <span asp-validation-for="newDish.Calories"></span>
+                    <span asp-validation-for="newDish.Tastiness"></span>
+                    <span asp-validation-for="newDish.Description"></span>
+            </div>
+        </div>
+        
+    </body>
+</html>
